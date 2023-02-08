@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Art/tilebox.tres" type="Shape2D" id=1]
+[ext_resource path="res://Game/Actions/Gather.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Art/Tiles.png" type="Texture" id=3]
+
+[node name="WheatTile" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Wheat" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 192, 0, 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = ExtResource( 1 )
