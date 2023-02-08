@@ -1,9 +1,18 @@
 class_name Craft
-extends Gamestate
+extends Node
+
+onready var gamestate = get_node("/root/Gamestate")
+onready var itemlist = get_node("/root/Gamestate/Control/ItemList")
 
 func house_click(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		print(materials["wood"])
+		if gamestate.materials["wood"] >= 2:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["plank"] += 1
+			print(gamestate.materials["wood"], " wood")
+			print(gamestate.materials["plank"], " planks")
+			itemlist.set_item_text(3, str("Wood: ", gamestate.materials["wood"]))
+			itemlist.set_item_text(6, str("Plank: ", gamestate.materials["plank"]))
 
 #func brick():
 #

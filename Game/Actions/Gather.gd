@@ -1,35 +1,39 @@
 class_name Gather
-extends Gamestate
+extends Node
+
+onready var gamestate = get_node("/root/Gamestate")
+onready var itemlist = get_node("/root/Gamestate/Control/ItemList")
 
 func tree(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		materials["wood"] += 1
-		print("+1 wood")
-		print(materials["wood"])
+		gamestate.materials["wood"] += 2
+		print(gamestate.materials["wood"], " wood")
+		itemlist.set_item_text(3, str("Wood: ", gamestate.materials["wood"]))
 
 func rock(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		materials["stone"] += 1
-		materials["ore"] += 1
-		print("+1 stone")
-		print("+1 ore")
-		print(materials["stone"])
-		print(materials["ore"])
+		gamestate.materials["stone"] += 1
+		gamestate.materials["ore"] += 1
+		print(gamestate.materials["stone"], " stone")
+		print(gamestate.materials["ore"], " ore")
+		itemlist.set_item_text(4, str("Stone: ", gamestate.materials["stone"]))
+		itemlist.set_item_text(5, str("Ore: ", gamestate.materials["ore"]))
 
 func wheat(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		get_node(".").food += 1
-		print("+1 food")
-		print(get_node(".").food)
+		gamestate.food += 1
+		print(gamestate.food, " food")
+		itemlist.set_item_text(1, str("Food: ", gamestate.food))
 
 func animal(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		food += 2
-		print("+2 food")
-		print(food)
+		gamestate.food += 2
+		print(gamestate.food, " food")
+		itemlist.set_item_text(1, str("Food: ", gamestate.food))
 
 func people(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		people += 5
+		gamestate.people += 5
 		print("+5 people")
-		print(people)
+		print(gamestate.people, " people")
+		itemlist.set_item_text(0, str("People: ", gamestate.people))
