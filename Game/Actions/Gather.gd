@@ -1,39 +1,56 @@
 class_name Gather
 extends Node
 
-onready var gamestate = get_node("/root/Gamestate")
-onready var itemlist = get_node("/root/Gamestate/Control/ItemList")
+onready var gamestate = $"/root/System/Gamestate"
+onready var resourcelist = get_node("/root/System/Gamestate/Interface/resources")
+onready var statslist = get_node("/root/System/Gamestate/Interface/stats")
+
+func update_display():
+	gamestate.stats["damage"] = (gamestate.people/5.0)+(gamestate.items["t1_weapon"]*1)+(gamestate.items["t2_weapon"]*2)
+	gamestate.stats["defense"] = (gamestate.items["t1_armor"]*1)+(gamestate.items["t2_armor"]*2)
+	gamestate.stats["woodcutting"] = (gamestate.people/5.0)+(gamestate.items["t1_axe"]*2)+(gamestate.items["t2_axe"]*4)
+	gamestate.stats["mining"] = (gamestate.people/10.0)+(gamestate.items["t1_pickaxe"]*1)+(gamestate.items["t2_pickaxe"]*2)
+	gamestate.stats["farming"] = (gamestate.people/10.0)+(gamestate.items["t1_sickle"]*1)+(gamestate.items["t2_sickle"]*2)
+	gamestate.material_cap = 10+(gamestate.structures["warehouse"]*10)
+	gamestate.people_cap = 20+(gamestate.structures["house"]*5)
+	resourcelist.display_resources()
+	statslist.display_stats()
 
 func tree(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		gamestate.materials["wood"] += 2
-		print(gamestate.materials["wood"], " wood")
-		itemlist.set_item_text(3, str("Wood: ", gamestate.materials["wood"]))
+		if gamestate.materials["wood"] != gamestate.material_cap:
+			gamestate.materials["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.materials["wood"]))
+			update_display()
+		else: 
+			print("wood is full capacity!")
 
 func rock(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		gamestate.materials["stone"] += 1
-		gamestate.materials["ore"] += 1
-		print(gamestate.materials["stone"], " stone")
-		print(gamestate.materials["ore"], " ore")
-		itemlist.set_item_text(4, str("Stone: ", gamestate.materials["stone"]))
-		itemlist.set_item_text(5, str("Ore: ", gamestate.materials["ore"]))
+		if gamestate.materials["stone"] != gamestate.material_cap:
+			gamestate.materials["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["stone"]))
+		else:
+			print("stone is full capacity!")
+		if gamestate.materials["ore"] != gamestate.material_cap:
+			gamestate.materials["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["ore"]))
+		else:
+			print("ore is full capacity!")
+		update_display()
 
 func wheat(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		gamestate.food += 1
-		print(gamestate.food, " food")
-		itemlist.set_item_text(1, str("Food: ", gamestate.food))
+		gamestate.food += (gamestate.stats["farming"])
+		update_display()
 
 func animal(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		gamestate.food += 2
-		print(gamestate.food, " food")
-		itemlist.set_item_text(1, str("Food: ", gamestate.food))
+		gamestate.food += (gamestate.stats["damage"])
+		update_display()
 
 func people(viewport, event, shape_idx):
 	if (event.is_pressed()):
-		gamestate.people += 5
-		print("+5 people")
-		print(gamestate.people, " people")
-		itemlist.set_item_text(0, str("People: ", gamestate.people))
+		if gamestate.people != gamestate.people_cap:
+			gamestate.people += clamp(5, 0, (gamestate.people_cap-gamestate.people))
+			resourcelist.display_resources()
+			update_display()
+		else:
+			print("people are full capacity!")

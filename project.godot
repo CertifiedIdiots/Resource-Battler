@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Gather",
 "class": "Craft",
 "language": "GDScript",
 "path": "res://Game/Actions/Craft.gd"
@@ -24,16 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Actions/Gather.gd"
 }, {
-"base": "Node",
-"class": "System",
+"base": "Craft",
+"class": "Structures",
 "language": "GDScript",
-"path": "res://Game/System/System.gd"
+"path": "res://Game/Actions/Structures.gd"
 } ]
 _global_script_class_icons={
 "Craft": "",
 "Gamestate": "",
 "Gather": "",
-"System": ""
+"Structures": ""
 }
 
 [application]
@@ -45,7 +45,7 @@ config/icon="res://icon.png"
 [display]
 
 window/size/width=1920
-window/size/height=1080
+window/size/height=1024
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

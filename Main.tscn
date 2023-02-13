@@ -1,82 +1,530 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Art/test_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://Game/Tiles/HouseTile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game/Tiles/FoundryTile.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Game/Tiles/AnimalTile.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Game/Tiles/StonemasonTile.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Game/Tiles/RockTile.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Game/Tiles/TreeTile.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Game/Tiles/WheatTile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Game/Tiles/PeopleTile.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Game/Tiles/FarmTile.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Game/Tiles/SawmillTile.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Game/Tiles/WarehouseTile.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Game/Tiles/MonumentTile.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Game/System/Gamestate.gd" type="Script" id=14]
-[ext_resource path="res://Game/System/Boardstate.gd" type="Script" id=15]
-[ext_resource path="res://UI/ResourceTracker.gd" type="Script" id=16]
+[ext_resource path="res://Game/Actions/Structures.gd" type="Script" id=2]
+[ext_resource path="res://UI/Display.gd" type="Script" id=3]
+[ext_resource path="res://Game/System/Gamestate.gd" type="Script" id=4]
+[ext_resource path="res://Game/Actions/Craft.gd" type="Script" id=5]
+[ext_resource path="res://Game/Tiles/RockTile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Game/Tiles/TreeTile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Game/Tiles/WheatTile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Game/Tiles/PeopleTile.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Game/Tiles/AnimalTile.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Game/System/System.gd" type="Script" id=18]
+[ext_resource path="res://UI/tile.tscn" type="PackedScene" id=19]
 
-[node name="Gamestate" type="Node2D"]
-script = ExtResource( 14 )
+[node name="System" type="Node"]
+script = ExtResource( 18 )
 
-[node name="Boardstate" type="TileMap" parent="."]
+[node name="Gamestate" type="Node2D" parent="."]
+position = Vector2( 64, 0 )
+script = ExtResource( 4 )
+
+[node name="Boardstate" type="TileMap" parent="Gamestate"]
 tile_set = ExtResource( 1 )
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0 )
-script = ExtResource( 15 )
 
-[node name="TreeTile" parent="Boardstate" instance=ExtResource( 7 )]
+[node name="Board" type="Node2D" parent="Gamestate/Boardstate"]
+
+[node name="tile1" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 224 )
+
+[node name="tile2" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 224 )
+
+[node name="tile3" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 224 )
+
+[node name="tile4" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 224 )
+
+[node name="tile5" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 224 )
+
+[node name="tile6" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 224 )
+
+[node name="tile7" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 224 )
+
+[node name="tile8" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 224 )
+
+[node name="tile9" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 224 )
+
+[node name="tile10" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 224 )
+
+[node name="tile11" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 288 )
+
+[node name="tile12" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 736, 288 )
 
-[node name="RockTile" parent="Boardstate" instance=ExtResource( 6 )]
-position = Vector2( 736, 352 )
+[node name="tile13" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 288 )
 
-[node name="WheatTile" parent="Boardstate" instance=ExtResource( 8 )]
-position = Vector2( 736, 416 )
-
-[node name="AnimalTile" parent="Boardstate" instance=ExtResource( 4 )]
-position = Vector2( 736, 480 )
-
-[node name="PeopleTile" parent="Boardstate" instance=ExtResource( 9 )]
-position = Vector2( 736, 544 )
-
-[node name="HouseTile" parent="Boardstate" instance=ExtResource( 2 )]
+[node name="tile14" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 864, 288 )
 
-[node name="FarmTile" parent="Boardstate" instance=ExtResource( 10 )]
-position = Vector2( 864, 352 )
-
-[node name="SawmillTile" parent="Boardstate" instance=ExtResource( 11 )]
-position = Vector2( 864, 416 )
-
-[node name="StonemasonTile" parent="Boardstate" instance=ExtResource( 5 )]
-position = Vector2( 864, 480 )
-
-[node name="FoundryTile" parent="Boardstate" instance=ExtResource( 3 )]
+[node name="tile15" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 928, 288 )
 
-[node name="WarehouseTile" parent="Boardstate" instance=ExtResource( 12 )]
+[node name="tile16" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 288 )
+
+[node name="tile17" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 288 )
+
+[node name="tile18" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 288 )
+
+[node name="tile19" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 288 )
+
+[node name="tile20" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 288 )
+
+[node name="tile21" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 352 )
+
+[node name="tile22" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 352 )
+
+[node name="tile23" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 352 )
+
+[node name="tile24" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 352 )
+
+[node name="tile25" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 928, 352 )
 
-[node name="MonumentTile" parent="Boardstate" instance=ExtResource( 13 )]
+[node name="tile26" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 352 )
+
+[node name="tile27" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 352 )
+
+[node name="tile28" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 352 )
+
+[node name="tile29" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 352 )
+
+[node name="tile30" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 352 )
+
+[node name="tile31" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 416 )
+
+[node name="tile32" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 416 )
+
+[node name="tile33" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 416 )
+
+[node name="tile34" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 416 )
+
+[node name="tile35" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 928, 416 )
 
-[node name="Control" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="tile36" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 416 )
 
-[node name="ItemList" type="ItemList" parent="Control"]
-margin_left = 427.0
-margin_top = 197.0
-margin_right = 513.0
-margin_bottom = 392.0
+[node name="tile37" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 416 )
+
+[node name="tile38" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 416 )
+
+[node name="tile39" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 416 )
+
+[node name="tile40" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 416 )
+
+[node name="tile41" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 480 )
+
+[node name="tile42" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 480 )
+
+[node name="tile43" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 480 )
+
+[node name="tile44" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 480 )
+
+[node name="tile45" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 480 )
+
+[node name="tile46" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 480 )
+
+[node name="tile47" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 480 )
+
+[node name="tile48" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 480 )
+
+[node name="tile49" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 480 )
+
+[node name="tile50" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 480 )
+
+[node name="tile51" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 544 )
+
+[node name="tile52" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 544 )
+
+[node name="tile53" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 544 )
+
+[node name="tile54" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 544 )
+
+[node name="tile55" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 544 )
+
+[node name="tile56" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 544 )
+
+[node name="tile57" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 544 )
+
+[node name="tile58" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 544 )
+
+[node name="tile59" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 544 )
+
+[node name="tile60" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 544 )
+
+[node name="tile61" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 608 )
+
+[node name="tile62" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 608 )
+
+[node name="tile63" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 608 )
+
+[node name="tile64" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 608 )
+
+[node name="tile65" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 608 )
+
+[node name="tile66" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 608 )
+
+[node name="tile67" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 608 )
+
+[node name="tile68" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 608 )
+
+[node name="tile69" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 608 )
+
+[node name="tile70" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 608 )
+
+[node name="tile71" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 672 )
+
+[node name="tile72" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 672 )
+
+[node name="tile73" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 672 )
+
+[node name="tile74" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 672 )
+
+[node name="tile75" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 672 )
+
+[node name="tile76" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 672 )
+
+[node name="tile77" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 672 )
+
+[node name="tile78" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 672 )
+
+[node name="tile79" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 672 )
+
+[node name="tile80" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 672 )
+
+[node name="tile81" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 736 )
+
+[node name="tile82" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 736 )
+
+[node name="tile83" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 736 )
+
+[node name="tile84" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 736 )
+
+[node name="tile85" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 736 )
+
+[node name="tile86" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 736 )
+
+[node name="tile87" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 736 )
+
+[node name="tile88" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 736 )
+
+[node name="tile89" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 736 )
+
+[node name="tile90" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 736 )
+
+[node name="tile91" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 672, 800 )
+
+[node name="tile92" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 736, 800 )
+
+[node name="tile93" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 800, 800 )
+
+[node name="tile94" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 864, 800 )
+
+[node name="tile95" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 928, 800 )
+
+[node name="tile96" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 992, 800 )
+
+[node name="tile97" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1056, 800 )
+
+[node name="tile98" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1120, 800 )
+
+[node name="tile99" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1184, 800 )
+
+[node name="tile100" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
+position = Vector2( 1248, 800 )
+
+[node name="Interface" type="Control" parent="Gamestate"]
+
+[node name="resources" type="ItemList" parent="Gamestate/Interface"]
+margin_left = 412.0
+margin_top = 133.0
+margin_right = 519.0
+margin_bottom = 328.0
 rect_scale = Vector2( 2, 2 )
 mouse_filter = 2
-script = ExtResource( 16 )
+script = ExtResource( 3 )
 
-[connection signal="input_event" from="Boardstate/RockTile" to="Boardstate/RockTile" method="rock"]
-[connection signal="input_event" from="Boardstate/WheatTile" to="Boardstate/WheatTile" method="wheat"]
-[connection signal="input_event" from="Boardstate/AnimalTile" to="Boardstate/AnimalTile" method="animal"]
-[connection signal="input_event" from="Boardstate/PeopleTile" to="Boardstate/PeopleTile" method="people"]
-[connection signal="ready" from="Control/ItemList" to="Control/ItemList" method="start"]
+[node name="stats" type="ItemList" parent="Gamestate/Interface"]
+margin_left = 173.0
+margin_top = 133.0
+margin_right = 396.0
+margin_bottom = 523.0
+mouse_filter = 2
+script = ExtResource( 3 )
+
+[node name="refine" type="VBoxContainer" parent="Gamestate/Interface"]
+margin_left = 481.0
+margin_top = 552.0
+margin_right = 580.0
+margin_bottom = 687.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="craft plank" type="Button" parent="Gamestate/Interface/refine"]
+margin_right = 99.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Plank"
+clip_text = true
+script = ExtResource( 5 )
+
+[node name="craft brick" type="Button" parent="Gamestate/Interface/refine"]
+margin_top = 46.0
+margin_right = 99.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Brick"
+script = ExtResource( 5 )
+
+[node name="craft ingot" type="Button" parent="Gamestate/Interface/refine"]
+margin_top = 92.0
+margin_right = 99.0
+margin_bottom = 135.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Ingot"
+script = ExtResource( 5 )
+
+[node name="items" type="VBoxContainer" parent="Gamestate/Interface"]
+margin_left = 302.0
+margin_top = 553.0
+margin_right = 414.0
+margin_bottom = 771.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="craft axe" type="Button" parent="Gamestate/Interface/items"]
+margin_right = 112.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Axe"
+clip_text = true
+script = ExtResource( 5 )
+
+[node name="craft pickaxe" type="Button" parent="Gamestate/Interface/items"]
+margin_top = 44.0
+margin_right = 112.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Pickaxe"
+script = ExtResource( 5 )
+
+[node name="craft sickle" type="Button" parent="Gamestate/Interface/items"]
+margin_top = 88.0
+margin_right = 112.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Sickle"
+script = ExtResource( 5 )
+
+[node name="craft weapon" type="Button" parent="Gamestate/Interface/items"]
+margin_top = 133.0
+margin_right = 112.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Weapon"
+clip_text = true
+script = ExtResource( 5 )
+
+[node name="craft armor" type="Button" parent="Gamestate/Interface/items"]
+margin_top = 177.0
+margin_right = 112.0
+margin_bottom = 218.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Craft Armor"
+clip_text = true
+script = ExtResource( 5 )
+
+[node name="structures" type="GridContainer" parent="Gamestate/Interface"]
+margin_left = 3.0
+margin_top = 554.0
+margin_right = 292.0
+margin_bottom = 749.0
+columns = 3
+
+[node name="house" type="Button" parent="Gamestate/Interface/structures"]
+margin_right = 90.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Build House"
+script = ExtResource( 2 )
+
+[node name="warehouse" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 94.0
+margin_right = 215.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "Build Warehouse"
+script = ExtResource( 2 )
+
+[node name="Button3" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 219.0
+margin_right = 289.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+script = ExtResource( 2 )
+
+[node name="Button4" type="Button" parent="Gamestate/Interface/structures"]
+margin_top = 100.0
+margin_right = 90.0
+margin_bottom = 195.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+script = ExtResource( 2 )
+
+[node name="Button5" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 94.0
+margin_top = 100.0
+margin_right = 215.0
+margin_bottom = 195.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+script = ExtResource( 2 )
+
+[node name="Button6" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 219.0
+margin_top = 100.0
+margin_right = 289.0
+margin_bottom = 195.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+script = ExtResource( 2 )
+
+[node name="temp gather" type="Node2D" parent="Gamestate/Interface"]
+
+[node name="PeopleTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 14 )]
+position = Vector2( 947, 143 )
+
+[node name="AnimalTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 16 )]
+position = Vector2( 880, 143 )
+
+[node name="WheatTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 10 )]
+position = Vector2( 810, 143 )
+
+[node name="RockTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 7 )]
+position = Vector2( 740, 143 )
+
+[node name="TreeTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 8 )]
+position = Vector2( 672, 143 )
+
+[connection signal="ready" from="Gamestate/Interface/resources" to="Gamestate/Interface/resources" method="load_resources"]
+[connection signal="ready" from="Gamestate/Interface/stats" to="Gamestate/Interface/stats" method="load_stats"]
+[connection signal="pressed" from="Gamestate/Interface/refine/craft plank" to="Gamestate/Interface/refine/craft plank" method="plank"]
+[connection signal="pressed" from="Gamestate/Interface/refine/craft brick" to="Gamestate/Interface/refine/craft brick" method="brick"]
+[connection signal="pressed" from="Gamestate/Interface/refine/craft ingot" to="Gamestate/Interface/refine/craft ingot" method="ingot"]
+[connection signal="pressed" from="Gamestate/Interface/items/craft axe" to="Gamestate/Interface/items/craft axe" method="t1_axe"]
+[connection signal="pressed" from="Gamestate/Interface/items/craft pickaxe" to="Gamestate/Interface/items/craft pickaxe" method="t1_pickaxe"]
+[connection signal="pressed" from="Gamestate/Interface/items/craft sickle" to="Gamestate/Interface/items/craft sickle" method="t1_sickle"]
+[connection signal="pressed" from="Gamestate/Interface/items/craft weapon" to="Gamestate/Interface/items/craft weapon" method="t1_weapon"]
+[connection signal="pressed" from="Gamestate/Interface/items/craft armor" to="Gamestate/Interface/items/craft armor" method="t1_armor"]
+[connection signal="toggled" from="Gamestate/Interface/structures/house" to="Gamestate/Interface/structures/house" method="select_house"]
+[connection signal="toggled" from="Gamestate/Interface/structures/warehouse" to="Gamestate/Interface/structures/warehouse" method="select_warehouse"]
