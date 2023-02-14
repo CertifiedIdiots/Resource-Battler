@@ -1,3 +1,4 @@
+class_name TileGrid
 extends Structures
 
 func hover_tile():
@@ -10,4 +11,3 @@ func click_tile(viewport, event, shape_idx):
 	if event.is_pressed():
 		place_structure()
 		gamestate.tile_empty = false
-	

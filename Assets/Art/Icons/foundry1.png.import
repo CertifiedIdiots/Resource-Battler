@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/damage1.png-cb883a04c103702d297156f67cd0a25e.stex"
+path="res://.import/foundry1.png-59413d3ca4532916f8fe15d0468dce32.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/damage1.png"
-dest_files=[ "res://.import/damage1.png-cb883a04c103702d297156f67cd0a25e.stex" ]
+source_file="res://Assets/Art/Icons/foundry1.png"
+dest_files=[ "res://.import/foundry1.png-59413d3ca4532916f8fe15d0468dce32.stex" ]
 
 [params]
 

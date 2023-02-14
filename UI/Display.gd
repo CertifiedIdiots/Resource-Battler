@@ -14,11 +14,11 @@ func load_resources():
 	add_item(str("Ingot: ", gamestate.materials["ingot"]))
 
 func load_stats():
-	add_item(str("Damage: ", gamestate.stats["damage"]), load("res://Assets/Art/damage1.png"))
-	add_item(str("Defense: ", gamestate.stats["defense"]), load("res://Assets/Art/defense1.png"))
-	add_item(str("Woodcutting: ", gamestate.stats["woodcutting"]), load("res://Assets/Art/axe1.png"))
-	add_item(str("Mining: ", gamestate.stats["mining"]), load("res://Assets/Art/pickaxe1.png"))
-	add_item(str("Farming: ", gamestate.stats["farming"]), load("res://Assets/Art/sickle1.png"))
+	add_item(str("Damage: ", gamestate.stats["damage"]), load("res://Assets/Art/Icons/damage1.png"))
+	add_item(str("Defense: ", gamestate.stats["defense"]), load("res://Assets/Art/Icons/defense1.png"))
+	add_item(str("Woodcutting: ", gamestate.stats["woodcutting"]), load("res://Assets/Art/Icons/axe1.png"))
+	add_item(str("Mining: ", gamestate.stats["mining"]), load("res://Assets/Art/Icons/pickaxe1.png"))
+	add_item(str("Farming: ", gamestate.stats["farming"]), load("res://Assets/Art/Icons/sickle1.png"))
 	
 func display_resources():
 	set_item_text(0, str("People: ", gamestate.people))

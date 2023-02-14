@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/defense1.png-2069240ac08b1f080d8b356e7c744d78.stex"
+path="res://.import/pickaxe1.png-8b4be2cc656400cbbcacca6e92038e5c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/defense1.png"
-dest_files=[ "res://.import/defense1.png-2069240ac08b1f080d8b356e7c744d78.stex" ]
+source_file="res://Assets/Art/Icons/pickaxe1.png"
+dest_files=[ "res://.import/pickaxe1.png-8b4be2cc656400cbbcacca6e92038e5c.stex" ]
 
 [params]
 

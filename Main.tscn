@@ -1,20 +1,26 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Art/test_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Actions/Structures.gd" type="Script" id=2]
 [ext_resource path="res://UI/Display.gd" type="Script" id=3]
 [ext_resource path="res://Game/System/Gamestate.gd" type="Script" id=4]
 [ext_resource path="res://Game/Actions/Craft.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Art/Icons/house1.png" type="Texture" id=6]
 [ext_resource path="res://Game/Tiles/RockTile.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Game/Tiles/TreeTile.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Art/Icons/warehouse1.png" type="Texture" id=9]
 [ext_resource path="res://Game/Tiles/WheatTile.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Art/Icons/farm1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Art/Icons/foundry1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Art/Icons/sawmill1.png" type="Texture" id=13]
 [ext_resource path="res://Game/Tiles/PeopleTile.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assets/Art/Icons/stonemason1.png" type="Texture" id=15]
 [ext_resource path="res://Game/Tiles/AnimalTile.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Assets/Art/Icons/monument1.png" type="Texture" id=17]
 [ext_resource path="res://Game/System/System.gd" type="Script" id=18]
 [ext_resource path="res://UI/tile.tscn" type="PackedScene" id=19]
 
 [node name="System" type="Node"]
-script = ExtResource( 18 )
 
 [node name="Gamestate" type="Node2D" parent="."]
 position = Vector2( 64, 0 )
@@ -27,6 +33,7 @@ format = 1
 tile_data = PoolIntArray( 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 262160, 0, 0, 262161, 0, 0, 262162, 0, 0, 262163, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 327695, 0, 0, 327696, 0, 0, 327697, 0, 0, 327698, 0, 0, 327699, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 0, 0, 393233, 0, 0, 393234, 0, 0, 393235, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458767, 0, 0, 458768, 0, 0, 458769, 0, 0, 458770, 0, 0, 458771, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655375, 0, 0, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 0, 0, 720911, 0, 0, 720912, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786446, 0, 0, 786447, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0 )
 
 [node name="Board" type="Node2D" parent="Gamestate/Boardstate"]
+script = ExtResource( 18 )
 
 [node name="tile1" parent="Gamestate/Boardstate/Board" instance=ExtResource( 19 )]
 position = Vector2( 672, 224 )
@@ -436,70 +443,114 @@ clip_text = true
 script = ExtResource( 5 )
 
 [node name="structures" type="GridContainer" parent="Gamestate/Interface"]
-margin_left = 3.0
+margin_left = 7.0
 margin_top = 554.0
 margin_right = 292.0
-margin_bottom = 749.0
+margin_bottom = 837.0
 columns = 3
 
 [node name="house" type="Button" parent="Gamestate/Interface/structures"]
-margin_right = 90.0
-margin_bottom = 96.0
+margin_right = 93.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
-text = "Build House"
+icon = ExtResource( 6 )
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="farm" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 97.0
+margin_right = 189.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+icon = ExtResource( 11 )
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="sawmill" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 193.0
+margin_right = 285.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+icon = ExtResource( 13 )
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="stonemason" type="Button" parent="Gamestate/Interface/structures"]
+margin_top = 96.0
+margin_right = 93.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+icon = ExtResource( 15 )
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="foundry" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 97.0
+margin_top = 96.0
+margin_right = 189.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+icon = ExtResource( 12 )
+icon_align = 1
 script = ExtResource( 2 )
 
 [node name="warehouse" type="Button" parent="Gamestate/Interface/structures"]
-margin_left = 94.0
-margin_right = 215.0
-margin_bottom = 96.0
+margin_left = 193.0
+margin_top = 96.0
+margin_right = 285.0
+margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
-text = "Build Warehouse"
+icon = ExtResource( 9 )
+icon_align = 1
 script = ExtResource( 2 )
 
-[node name="Button3" type="Button" parent="Gamestate/Interface/structures"]
-margin_left = 219.0
-margin_right = 289.0
-margin_bottom = 96.0
+[node name="monument" type="Button" parent="Gamestate/Interface/structures"]
+margin_top = 192.0
+margin_right = 93.0
+margin_bottom = 283.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
+icon = ExtResource( 17 )
+icon_align = 1
 script = ExtResource( 2 )
 
-[node name="Button4" type="Button" parent="Gamestate/Interface/structures"]
-margin_top = 100.0
-margin_right = 90.0
-margin_bottom = 195.0
+[node name="none" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 97.0
+margin_top = 192.0
+margin_right = 189.0
+margin_bottom = 283.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
+icon_align = 1
 script = ExtResource( 2 )
 
-[node name="Button5" type="Button" parent="Gamestate/Interface/structures"]
-margin_left = 94.0
-margin_top = 100.0
-margin_right = 215.0
-margin_bottom = 195.0
+[node name="none2" type="Button" parent="Gamestate/Interface/structures"]
+margin_left = 193.0
+margin_top = 192.0
+margin_right = 285.0
+margin_bottom = 283.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
-script = ExtResource( 2 )
-
-[node name="Button6" type="Button" parent="Gamestate/Interface/structures"]
-margin_left = 219.0
-margin_top = 100.0
-margin_right = 289.0
-margin_bottom = 195.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-toggle_mode = true
+icon_align = 1
 script = ExtResource( 2 )
 
 [node name="temp gather" type="Node2D" parent="Gamestate/Interface"]
+visible = false
 
 [node name="PeopleTile" parent="Gamestate/Interface/temp gather" instance=ExtResource( 14 )]
 position = Vector2( 947, 143 )
@@ -526,5 +577,12 @@ position = Vector2( 672, 143 )
 [connection signal="pressed" from="Gamestate/Interface/items/craft sickle" to="Gamestate/Interface/items/craft sickle" method="t1_sickle"]
 [connection signal="pressed" from="Gamestate/Interface/items/craft weapon" to="Gamestate/Interface/items/craft weapon" method="t1_weapon"]
 [connection signal="pressed" from="Gamestate/Interface/items/craft armor" to="Gamestate/Interface/items/craft armor" method="t1_armor"]
-[connection signal="toggled" from="Gamestate/Interface/structures/house" to="Gamestate/Interface/structures/house" method="select_house"]
-[connection signal="toggled" from="Gamestate/Interface/structures/warehouse" to="Gamestate/Interface/structures/warehouse" method="select_warehouse"]
+[connection signal="toggled" from="Gamestate/Interface/structures/house" to="Gamestate/Interface/structures/house" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/farm" to="Gamestate/Interface/structures/farm" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/sawmill" to="Gamestate/Interface/structures/sawmill" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/stonemason" to="Gamestate/Interface/structures/stonemason" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/foundry" to="Gamestate/Interface/structures/foundry" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/warehouse" to="Gamestate/Interface/structures/warehouse" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/monument" to="Gamestate/Interface/structures/monument" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/none" to="Gamestate/Interface/structures/none" method="select_structure"]
+[connection signal="toggled" from="Gamestate/Interface/structures/none2" to="Gamestate/Interface/structures/none2" method="select_structure"]

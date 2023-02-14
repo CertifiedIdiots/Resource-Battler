@@ -28,12 +28,24 @@ _global_script_classes=[ {
 "class": "Structures",
 "language": "GDScript",
 "path": "res://Game/Actions/Structures.gd"
+}, {
+"base": "TileGrid",
+"class": "System",
+"language": "GDScript",
+"path": "res://Game/System/System.gd"
+}, {
+"base": "Structures",
+"class": "TileGrid",
+"language": "GDScript",
+"path": "res://Game/System/TileGrid.gd"
 } ]
 _global_script_class_icons={
 "Craft": "",
 "Gamestate": "",
 "Gather": "",
-"Structures": ""
+"Structures": "",
+"System": "",
+"TileGrid": ""
 }
 
 [application]

@@ -11,19 +11,11 @@ onready var structure = {
 	"monument": preload("res://Game/Tiles/MonumentTile.tscn").instance(),
 }
 
-var pressed
-
-func select_house(button_pressed):
+func select_structure(button_pressed):
 	if button_pressed:
-		gamestate.selected["house"] = true
+		gamestate.selected[str(self.name)] = true
 	else:
-		gamestate.selected["house"] = false
-
-func select_warehouse(button_pressed):
-	if button_pressed:
-		gamestate.selected["warehouse"] = true
-	else:
-		gamestate.selected["warehouse"] = false
+		gamestate.selected[str(self.name)] = false
 
 func place_structure():
 	if gamestate.selected["house"] and gamestate.tile_empty:
@@ -35,6 +27,47 @@ func place_structure():
 			update_display()
 		else:
 			print("not enough material")
+			
+	elif gamestate.selected["farm"] and gamestate.tile_empty:
+		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 3:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["stone"] -= 3
+			self.add_child(structure["farm"])
+			gamestate.structures["farm"] += 1
+			update_display()
+		else:
+			print("not enough material")
+			
+	elif gamestate.selected["sawmill"] and gamestate.tile_empty:
+		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 3:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["stone"] -= 3
+			self.add_child(structure["sawmill"])
+			gamestate.structures["sawmill"] += 1
+			update_display()
+		else:
+			print("not enough material")
+			
+	elif gamestate.selected["stonemason"] and gamestate.tile_empty:
+		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 3:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["stone"] -= 3
+			self.add_child(structure["stonemason"])
+			gamestate.structures["stonemason"] += 1
+			update_display()
+		else:
+			print("not enough material")
+			
+	elif gamestate.selected["foundry"] and gamestate.tile_empty:
+		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 3:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["stone"] -= 3
+			self.add_child(structure["foundry"])
+			gamestate.structures["foundry"] += 1
+			update_display()
+		else:
+			print("not enough material")
+			
 	elif gamestate.selected["warehouse"] and gamestate.tile_empty:
 		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 1:
 			gamestate.materials["wood"] -= 2
@@ -44,4 +77,16 @@ func place_structure():
 			update_display()
 		else:
 			print("not enough material")
+			
+	elif gamestate.selected["monument"] and gamestate.tile_empty:
+		if gamestate.materials["wood"] >= 2 and gamestate.materials["stone"] >= 2 and gamestate.materials["ore"] >= 2:
+			gamestate.materials["wood"] -= 2
+			gamestate.materials["stone"] -= 2
+			gamestate.materials["ore"] -= 2
+			self.add_child(structure["monument"])
+			gamestate.structures["monument"] += 1
+			update_display()
+		else:
+			print("not enough material")
+			
 	else: return

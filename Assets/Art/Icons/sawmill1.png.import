@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/axe1.png-d57800de99d7a0a6635d1ffec38d2bf4.stex"
+path="res://.import/sawmill1.png-6a4c7e55d7ad3bfff3fcc722aa3feb6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/axe1.png"
-dest_files=[ "res://.import/axe1.png-d57800de99d7a0a6635d1ffec38d2bf4.stex" ]
+source_file="res://Assets/Art/Icons/sawmill1.png"
+dest_files=[ "res://.import/sawmill1.png-6a4c7e55d7ad3bfff3fcc722aa3feb6f.stex" ]
 
 [params]
 

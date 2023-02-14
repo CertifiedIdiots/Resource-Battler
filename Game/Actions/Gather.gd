@@ -21,6 +21,7 @@ func tree(viewport, event, shape_idx):
 		if gamestate.materials["wood"] != gamestate.material_cap:
 			gamestate.materials["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.materials["wood"]))
 			update_display()
+			self.queue_free()
 		else: 
 			print("wood is full capacity!")
 
@@ -28,23 +29,28 @@ func rock(viewport, event, shape_idx):
 	if (event.is_pressed()):
 		if gamestate.materials["stone"] != gamestate.material_cap:
 			gamestate.materials["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["stone"]))
+			update_display()
+			self.queue_free()
 		else:
 			print("stone is full capacity!")
 		if gamestate.materials["ore"] != gamestate.material_cap:
 			gamestate.materials["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["ore"]))
+			update_display()
+			self.queue_free()
 		else:
 			print("ore is full capacity!")
-		update_display()
 
 func wheat(viewport, event, shape_idx):
 	if (event.is_pressed()):
 		gamestate.food += (gamestate.stats["farming"])
 		update_display()
+		self.queue_free()
 
 func animal(viewport, event, shape_idx):
 	if (event.is_pressed()):
 		gamestate.food += (gamestate.stats["damage"])
 		update_display()
+		self.queue_free()
 
 func people(viewport, event, shape_idx):
 	if (event.is_pressed()):
@@ -52,5 +58,6 @@ func people(viewport, event, shape_idx):
 			gamestate.people += clamp(5, 0, (gamestate.people_cap-gamestate.people))
 			resourcelist.display_resources()
 			update_display()
+			self.queue_free()
 		else:
 			print("people are full capacity!")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pickaxe1.png-2285cae36a2ec75c2b60792b0f561292.stex"
+path="res://.import/sickle1.png-97ecd301f811abaa720a05f9cd9152c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/pickaxe1.png"
-dest_files=[ "res://.import/pickaxe1.png-2285cae36a2ec75c2b60792b0f561292.stex" ]
+source_file="res://Assets/Art/Icons/sickle1.png"
+dest_files=[ "res://.import/sickle1.png-97ecd301f811abaa720a05f9cd9152c7.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sickle1.png-2dfb90e8291f1932d77bd2c76fb571f0.stex"
+path="res://.import/house1.png-46011c40a0749998cdd2bf05fef009af.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/sickle1.png"
-dest_files=[ "res://.import/sickle1.png-2dfb90e8291f1932d77bd2c76fb571f0.stex" ]
+source_file="res://Assets/Art/Icons/house1.png"
+dest_files=[ "res://.import/house1.png-46011c40a0749998cdd2bf05fef009af.stex" ]
 
 [params]
 
