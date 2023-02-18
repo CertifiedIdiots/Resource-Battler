@@ -1,7 +1,12 @@
 class_name Gamestate
 extends Node
 
+var turn_count = 1
+var level = 0
+var required_culture = 100
+
 var tile_empty: bool = false
+var build_mode = false
 var selected = {
 	"house": false,
 	"farm": false,
@@ -12,11 +17,11 @@ var selected = {
 	"monument": false
 }
 
-var people_cap = 20
-var material_cap = 10
+var people_cap = 100
+var material_cap = 100
 
-var people = 10
-var food = 10
+var people = 100
+var food = 200
 var culture = 0
 
 var stats = {
@@ -62,13 +67,3 @@ var structures = {
 	"warehouse": 0,
 	"monument": 0
 }
-
-func _init():
-	people_cap = 20+(structures["house"]*5)
-	material_cap = 10+(structures["warehouse"]*10)
-	stats["damage"] = (people/5.0)+(items["t1_weapon"]*1)+(items["t2_weapon"]*2)
-	stats["defense"] = (items["t1_armor"]*1)+(items["t2_armor"]*2)
-	stats["woodcutting"] = (people/5.0)+(items["t1_axe"]*2)+(items["t2_axe"]*4)
-	stats["mining"] = (people/10.0)+(items["t1_pickaxe"]*1)+(items["t2_pickaxe"]*2)
-	stats["farming"] = (people/10.0)+(items["t1_sickle"]*1)+(items["t2_sickle"]*2)
-	

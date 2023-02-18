@@ -10,10 +10,10 @@ script = ExtResource( 2 )
 [node name="Rock" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 region_enabled = true
-region_rect = Rect2( 64, 0, 64, 64 )
+region_rect = Rect2( 128, 0, 64, 64 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = ExtResource( 1 )
 
-[connection signal="input_event" from="." to="." method="rock"]
+[connection signal="input_event" from="." to="." method="ore"]
