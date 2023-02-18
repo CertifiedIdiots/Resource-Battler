@@ -84,7 +84,7 @@ func level_up():
 	print("next level: ", gamestate.required_culture)
 		
 func culture():
-	gamestate.culture += (gamestate.people + (gamestate.structures["monument"] * 10))
+	gamestate.culture += (gamestate.people + (gamestate.structures["monument"] * 100))
 	if gamestate.culture >= gamestate.required_culture:
 		level_up()
 			

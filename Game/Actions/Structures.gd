@@ -36,9 +36,9 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["farm"] and gamestate.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 30:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 30
+		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
+			gamestate.materials["wood"] -= 10
+			gamestate.materials["stone"] -= 20
 			self.add_child(structure["farm"])
 			gamestate.structures["farm"] += 1
 			system.next_turn()
@@ -46,9 +46,9 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["sawmill"] and gamestate.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 30:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 30
+		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
+			gamestate.materials["wood"] -= 10
+			gamestate.materials["stone"] -= 20
 			self.add_child(structure["sawmill"])
 			gamestate.structures["sawmill"] += 1
 			system.next_turn()
@@ -56,9 +56,9 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["stonemason"] and gamestate.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 30:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 30
+		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
+			gamestate.materials["wood"] -= 10
+			gamestate.materials["stone"] -= 20
 			self.add_child(structure["stonemason"])
 			gamestate.structures["stonemason"] += 1
 			system.next_turn()
@@ -66,9 +66,9 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["foundry"] and gamestate.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 30:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 30
+		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
+			gamestate.materials["wood"] -= 10
+			gamestate.materials["stone"] -= 20
 			self.add_child(structure["foundry"])
 			gamestate.structures["foundry"] += 1
 			system.next_turn()
