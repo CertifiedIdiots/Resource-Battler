@@ -20,12 +20,11 @@ func select_structure(button_pressed):
 	else:
 		gamestate.selected[str(self.name)] = false
 		gamestate.build_mode = false
-	print(gamestate.build_mode)
 		
 
 
 func place_structure():
-	if gamestate.selected["house"] and gamestate.tile_empty:
+	if gamestate.selected["house"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 10:
 			gamestate.materials["wood"] -= 20
 			gamestate.materials["stone"] -= 10
@@ -35,17 +34,18 @@ func place_structure():
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["farm"] and gamestate.tile_empty:
+	elif gamestate.selected["farm"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
 			gamestate.materials["wood"] -= 10
 			gamestate.materials["stone"] -= 20
 			self.add_child(structure["farm"])
 			gamestate.structures["farm"] += 1
+			system.farm_tiles.append(self.get_child(1))
 			system.next_turn()
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["sawmill"] and gamestate.tile_empty:
+	elif gamestate.selected["sawmill"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
 			gamestate.materials["wood"] -= 10
 			gamestate.materials["stone"] -= 20
@@ -55,7 +55,7 @@ func place_structure():
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["stonemason"] and gamestate.tile_empty:
+	elif gamestate.selected["stonemason"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
 			gamestate.materials["wood"] -= 10
 			gamestate.materials["stone"] -= 20
@@ -65,7 +65,7 @@ func place_structure():
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["foundry"] and gamestate.tile_empty:
+	elif gamestate.selected["foundry"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
 			gamestate.materials["wood"] -= 10
 			gamestate.materials["stone"] -= 20
@@ -75,7 +75,7 @@ func place_structure():
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["warehouse"] and gamestate.tile_empty:
+	elif gamestate.selected["warehouse"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 10:
 			gamestate.materials["wood"] -= 20
 			gamestate.materials["stone"] -= 10
@@ -85,7 +85,7 @@ func place_structure():
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["monument"] and gamestate.tile_empty:
+	elif gamestate.selected["monument"] and self.tile_empty:
 		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 20 and gamestate.materials["ore"] >= 20:
 			gamestate.materials["wood"] -= 20
 			gamestate.materials["stone"] -= 20

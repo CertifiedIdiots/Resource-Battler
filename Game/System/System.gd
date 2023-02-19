@@ -6,8 +6,10 @@ onready var interface = $"Gamestate/Interface"
 onready var boss = $"Gamestate/Boss".get_child(0)
 
 onready var timer = load("res://Game/System/timer.tscn").instance()
+
 var initial_tiles = 30
 var board = []
+var farm_tiles = []
 var rng = RandomNumberGenerator.new()
 
 func _process(delta):
@@ -46,7 +48,7 @@ func _ready():
 		rng.randomize()
 		current_tile.hover_tile()
 		rng.randi_range(0, board.size())
-		if current_tile.gamestate.tile_empty and (rng.randi_range(0, 100) <= 45):
+		if current_tile.tile_empty and (rng.randi_range(0, 100) <= 45):
 			current_tile.add_child(resources[(rng.randi_range(0, 5))])
 	print("~~ TURN ", gamestate.turn_count, " ~~")
 			
@@ -67,7 +69,7 @@ func generate_tiles():
 		rng.randomize()
 		current_tile.hover_tile()
 		rng.randi_range(0, board.size())
-		if current_tile.gamestate.tile_empty and (random == 60):
+		if current_tile.tile_empty and (random == 0):
 			current_tile.add_child(resources[(rng.randi_range(0, 5))])
 			
 func hunger():
@@ -79,18 +81,26 @@ func hunger():
 func level_up():
 	gamestate.culture = 0
 	gamestate.level += 1
-	gamestate.required_culture = (gamestate.level * 200)
+	gamestate.required_culture *= 2
 	print("level ", gamestate.level," - choose perk")
 	print("next level: ", gamestate.required_culture)
 		
 func culture():
-	gamestate.culture += (gamestate.people + (gamestate.structures["monument"] * 100))
+	gamestate.culture += ((gamestate.people / 5) + (gamestate.structures["monument"] * 100))
 	if gamestate.culture >= gamestate.required_culture:
 		level_up()
 			
 func attack_boss():
 	boss.health = clamp((boss.health - gamestate.stats["damage"]), 0, (boss.health - gamestate.stats["damage"]))
 	next_turn()
+
+func farm():
+	rng.randomize()
+	for farm in farm_tiles:
+		var chance = rng.randi() % 100
+		if chance <= 60:
+			farm.generate_wheat()
+			rng.randomize()
 	
 func next_turn():
 	gamestate.turn_count += 1
@@ -98,6 +108,7 @@ func next_turn():
 	generate_tiles()
 	hunger()
 	culture()
+	farm()
 	interface.update_display()
 	boss.attack()
 	return
