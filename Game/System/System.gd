@@ -98,7 +98,7 @@ func farm():
 	rng.randomize()
 	for farm in farm_tiles:
 		var chance = rng.randi() % 100
-		if chance <= 60:
+		if chance <= 20:
 			farm.generate_wheat()
 			rng.randomize()
 	

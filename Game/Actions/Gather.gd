@@ -7,8 +7,8 @@ onready var interface = $"/root/System/Gamestate/Interface"
 
 func tree(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"):
-		if gamestate.materials["wood"] != gamestate.material_cap:
-			gamestate.materials["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.materials["wood"]))
+		if gamestate.inventory["wood"] != gamestate.material_cap:
+			gamestate.inventory["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.inventory["wood"]))
 			self.queue_free()
 			system.next_turn()
 		else: 
@@ -18,8 +18,8 @@ func tree(viewport, event, shape_idx):
 
 func rock(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"):
-		if gamestate.materials["stone"] != gamestate.material_cap:
-			gamestate.materials["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["stone"]))
+		if gamestate.inventory["stone"] != gamestate.material_cap:
+			gamestate.inventory["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.inventory["stone"]))
 			self.queue_free()
 			system.next_turn()
 		else: 
@@ -29,8 +29,8 @@ func rock(viewport, event, shape_idx):
 
 func ore(viewport, event, shape_idx):
 	if event.is_action_pressed("left_click"):
-		if gamestate.materials["ore"] != gamestate.material_cap:
-			gamestate.materials["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["ore"]))
+		if gamestate.inventory["ore"] != gamestate.material_cap:
+			gamestate.inventory["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.inventory["ore"]))
 			self.queue_free()
 			system.next_turn()
 		else: 
@@ -61,20 +61,20 @@ func people(viewport, event, shape_idx):
 			print("people are full capacity!")
 
 func temp_tree():
-	if gamestate.materials["wood"] != gamestate.material_cap:
-		gamestate.materials["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.materials["wood"]))
+	if gamestate.inventory["wood"] != gamestate.material_cap:
+		gamestate.inventory["wood"] += clamp(gamestate.stats["woodcutting"], 0, (gamestate.material_cap-gamestate.inventory["wood"]))
 	else: 
 		print("wood is full capacity!")
 
 func temp_rock():
-	if gamestate.materials["stone"] != gamestate.material_cap:
-		gamestate.materials["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["stone"]))
+	if gamestate.inventory["stone"] != gamestate.material_cap:
+		gamestate.inventory["stone"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.inventory["stone"]))
 	else: 
 		print("stone is full capacity!")
 		
 func temp_ore():
-	if gamestate.materials["ore"] != gamestate.material_cap:
-		gamestate.materials["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.materials["ore"]))
+	if gamestate.inventory["ore"] != gamestate.material_cap:
+		gamestate.inventory["ore"] += clamp(gamestate.stats["mining"], 0, (gamestate.material_cap-gamestate.inventory["ore"]))
 	else: 
 		print("ore is full capacity!")
 		

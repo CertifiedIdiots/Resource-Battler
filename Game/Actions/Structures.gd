@@ -25,19 +25,30 @@ func select_structure(button_pressed):
 
 func place_structure():
 	if gamestate.selected["house"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 10:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 10
+		if gamestate.inventory["wood"] >= 20 and gamestate.inventory["stone"] >= 10:
+			gamestate.inventory["wood"] -= 20
+			gamestate.inventory["stone"] -= 10
 			self.add_child(structure["house"])
 			gamestate.structures["house"] += 1
 			system.next_turn()
 		else:
 			print("not enough material")
+
+	elif gamestate.selected["warehouse"] and self.tile_empty:
+		if gamestate.inventory["wood"] >= 20 and gamestate.inventory["stone"] >= 10:
+			gamestate.inventory["wood"] -= 20
+			gamestate.inventory["stone"] -= 10
+			self.add_child(structure["warehouse"])
+			gamestate.structures["warehouse"] += 1
+			system.next_turn()
+		else:
+			print("not enough material")
 			
 	elif gamestate.selected["farm"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
-			gamestate.materials["wood"] -= 10
-			gamestate.materials["stone"] -= 20
+		if gamestate.inventory["wood"] >= 10 and gamestate.inventory["stone"] >= 10 and gamestate.food >= 20:
+			gamestate.inventory["wood"] -= 10
+			gamestate.inventory["stone"] -= 10
+			gamestate.food -= 20
 			self.add_child(structure["farm"])
 			gamestate.structures["farm"] += 1
 			system.farm_tiles.append(self.get_child(1))
@@ -46,9 +57,10 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["sawmill"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
-			gamestate.materials["wood"] -= 10
-			gamestate.materials["stone"] -= 20
+		if gamestate.inventory["wood"] >= 20 and gamestate.inventory["stone"] >= 10 and gamestate.inventory["ore"] >= 10:
+			gamestate.inventory["wood"] -= 20
+			gamestate.inventory["stone"] -= 10
+			gamestate.inventory["ore"] -= 10
 			self.add_child(structure["sawmill"])
 			gamestate.structures["sawmill"] += 1
 			system.next_turn()
@@ -56,9 +68,10 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["stonemason"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
-			gamestate.materials["wood"] -= 10
-			gamestate.materials["stone"] -= 20
+		if gamestate.inventory["wood"] >= 10 and gamestate.inventory["stone"] >= 20 and gamestate.inventory["ore"] >= 10:
+			gamestate.inventory["wood"] -= 10
+			gamestate.inventory["stone"] -= 20
+			gamestate.inventory["ore"] -= 10
 			self.add_child(structure["stonemason"])
 			gamestate.structures["stonemason"] += 1
 			system.next_turn()
@@ -66,30 +79,21 @@ func place_structure():
 			print("not enough material")
 			
 	elif gamestate.selected["foundry"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 10 and gamestate.materials["stone"] >= 20:
-			gamestate.materials["wood"] -= 10
-			gamestate.materials["stone"] -= 20
+		if gamestate.inventory["wood"] >= 10 and gamestate.inventory["stone"] >= 10 and gamestate.inventory["ore"] >= 20:
+			gamestate.inventory["wood"] -= 10
+			gamestate.inventory["stone"] -= 10
+			gamestate.inventory["ore"] -= 20
 			self.add_child(structure["foundry"])
 			gamestate.structures["foundry"] += 1
 			system.next_turn()
 		else:
 			print("not enough material")
 			
-	elif gamestate.selected["warehouse"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 10:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 10
-			self.add_child(structure["warehouse"])
-			gamestate.structures["warehouse"] += 1
-			system.next_turn()
-		else:
-			print("not enough material")
-			
 	elif gamestate.selected["monument"] and self.tile_empty:
-		if gamestate.materials["wood"] >= 20 and gamestate.materials["stone"] >= 20 and gamestate.materials["ore"] >= 20:
-			gamestate.materials["wood"] -= 20
-			gamestate.materials["stone"] -= 20
-			gamestate.materials["ore"] -= 20
+		if gamestate.inventory["wood"] >= 20 and gamestate.inventory["stone"] >= 20 and gamestate.inventory["ore"] >= 20:
+			gamestate.inventory["wood"] -= 20
+			gamestate.inventory["stone"] -= 20
+			gamestate.inventory["ore"] -= 20
 			self.add_child(structure["monument"])
 			gamestate.structures["monument"] += 1
 			system.next_turn()

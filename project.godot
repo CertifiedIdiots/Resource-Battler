@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Game/Actions/Gather.gd"
 }, {
+"base": "Gamestate",
+"class": "Recipes",
+"language": "GDScript",
+"path": "res://Game/System/Recipes.gd"
+}, {
 "base": "Craft",
 "class": "Structures",
 "language": "GDScript",
@@ -55,6 +60,7 @@ _global_script_class_icons={
 "Craft": "",
 "Gamestate": "",
 "Gather": "",
+"Recipes": "",
 "Structures": "",
 "System": "",
 "TileGrid": ""

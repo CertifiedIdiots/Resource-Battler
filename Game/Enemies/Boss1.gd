@@ -19,7 +19,7 @@ func _ready():
 	load_display()
 	
 func power_increase():
-	damage_increase = (gamestate.turn_count * 2) + 10
+	damage_increase = (gamestate.turn_count * 1) + 10
 	damage = clamp(damage_increase, 0, damage_increase)
 	
 func attack():

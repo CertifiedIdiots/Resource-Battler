@@ -5,18 +5,6 @@ var turn_count = 1
 var level = 0
 var required_culture = 100
 
-var tile_empty: bool = false
-var build_mode = false
-var selected = {
-	"house": false,
-	"farm": false,
-	"sawmill": false,
-	"stonemason": false,
-	"foundry": false,
-	"warehouse": false,
-	"monument": false
-}
-
 var people_cap = 100
 var material_cap = 100
 
@@ -32,16 +20,14 @@ var stats = {
 	"farming": 0.0
 }
 
-var materials = {
+var inventory = {
 	"wood": 0,
 	"stone": 0,
 	"ore": 0,
 	"plank": 0,
 	"brick": 0,
-	"ingot": 0
-}
-
-var items = {
+	"ingot": 0,
+	
 	"t1_weapon": 0,
 	"t2_weapon": 0,
 	
@@ -66,4 +52,17 @@ var structures = {
 	"foundry": 0,
 	"warehouse": 0,
 	"monument": 0
+}
+
+var tile_empty: bool = false
+var build_mode = false
+
+var selected = {
+	"house": false,
+	"farm": false,
+	"sawmill": false,
+	"stonemason": false,
+	"foundry": false,
+	"warehouse": false,
+	"monument": false
 }
